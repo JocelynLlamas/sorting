@@ -9,7 +9,7 @@ public class Main {
         Integer[] datos = {3, 2, 6, 3, 1, 8, 5, 4};
 
         sort(datos, new IntegerAscendantComparator());
-
+        System.out.println("-------- A S C E N D A N T --------");
         for (int dato : datos) {
             System.out.print(dato + ", ");
         }
@@ -17,7 +17,7 @@ public class Main {
         System.out.println();
 
         sort(datos, new IntegerDescendantComparator());
-
+        System.out.println("-------- D E S C E N D A N T --------");
         for (int dato : datos) {
             System.out.print(dato + ", ");
         }
@@ -27,7 +27,7 @@ public class Main {
         String[] nombres = {"Hector", "Jocelyn", "Antonio", "Caleb", "Isaías", "José", "Gustavo", "Alain", "Ivan"};
 
         sort(nombres, new StringAscendantComparator());
-
+        System.out.println("-------- A S C E N D A N T --------");
         for (String dato : nombres) {
             System.out.print(dato + ", ");
         }
@@ -35,10 +35,12 @@ public class Main {
         System.out.println();
 
         sort(nombres, new StringDescendantComparator());
-
+        System.out.println("-------- D E S C E N D A N T --------");
         for (String dato : nombres) {
             System.out.print(dato + ", ");
         }
+
+        System.out.println();
 
         Alumno alumnos[] = {
                 new Alumno("Hector", "Hernandez", LocalDate.of(2001, Month.AUGUST, 11), 4723717),
@@ -47,13 +49,39 @@ public class Main {
                 new Alumno("Francisco", "Solis", LocalDate.of(2001, Month.FEBRUARY, 14), 72436723),
                 new Alumno("Caleb", "Solis", LocalDate.of(2001, Month.FEBRUARY, 16), 72436723),
                 new Alumno("Arturo", "Llamas", LocalDate.of(2001, Month.JULY, 12), 32321),
-
-
         };
 
         // Ordenar los alumnos por lastName y firstName e imprimir
 
+        sort(alumnos, new AlumnAscendantComparator());
+        System.out.println("-------- A S C E N D A N T   N A M E --------");        
+        for (Alumno alumno : alumnos) {
+          
+            System.out.println(alumno.getLastName() + " " + alumno.getFirstName() + " " + alumno.getBirthday() + " " + alumno.getClave());
+        }
+
+        System.out.println();
+
+        sort(alumnos, new AlumnDescendantComparator());
+        System.out.println("-------- D E S C E N D A N T   N A M E --------");        
+        for (Alumno alumno : alumnos) {
+            
+            System.out.println(alumno.getLastName() + " " + alumno.getFirstName() + " " + alumno.getBirthday() + " " + alumno.getClave());
+        }
+
+        System.out.println();
+
+
         // Ordenar por mes de nacimiento y por clave e imprimir
+            
+        sort(alumnos, new MonthcodeComparator());
+        System.out.println("-------- M O N T H  A N D  C O D E --------");
+        for (Alumno alumno : alumnos) {
+        
+            System.out.println(alumno.getBirthday() + " " + alumno.getClave() + " " + alumno.getFirstName() + " " + alumno.getLastName());
+        }
+
+        System.out.println();
     }
 
     private static void sort(Object[] datos, Comparator comparator) {
@@ -69,4 +97,6 @@ public class Main {
             }
         }
     }
+
+    
 }
